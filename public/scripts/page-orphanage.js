@@ -1,4 +1,8 @@
 
+// get values from html
+const lat = document.querySelector('span[data-lat]').dataset.lat
+const lng = document.querySelector('span[data-lng]').dataset.lng
+
 const options =  {
     dragging: false,
     touchZoom: false,
@@ -8,7 +12,7 @@ const options =  {
 }
 
 //create map
-const map = L.map('mapid', options).setView([-23.5908081,-46.7230952], 15)
+const map = L.map('mapid', options).setView([lat,lng], 15)
 
 //create and add tileLayer
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map)
@@ -22,8 +26,9 @@ const icon = L.icon({
 })
 
 //create and add marker
+
 L
-.marker([-23.5908081,-46.7230952], { icon })
+.marker([lat,lng], { icon })
 .addTo(map)
 
 /* image gallery */
